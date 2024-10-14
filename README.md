@@ -20,9 +20,12 @@ _Runnable example with a cycling action flow._
   - The **FastAPI** Dockerfile.api has development and production builds
   - The development build includes hot reloading for fast development
   - The production build does not include hot reloading
-- **Burr**:
-  - The **Burr container** has not been tested in a production environment, and running it in production in its current form makes telemetry data public because there is no authentication protection.
-  - Recommend running this in development environment only.
+- **Burr**: 
+  - **Authentication:** Burr currently provides no auth layer protection. An auth layer or network access guard (VPC) should be implemented for a production environment.
+  - **Persistent Storage:** This example is configured using a shared docker volume that may not persist across reboots in a production virtual machine environment. For production, consider the following options:
+    - **Volume / Block Storage:** Mount a persistent volume / block storage to your production virtual machine that persists across reboots, update the production docker compose to have the containers target this volume.
+    - **s3 Backed Burr Server:** See [this example](https://github.com/DAGWorks-Inc/burr/blob/main/burr/tracking/server/s3/README.md) to configure a burr server that uses s3 as the communication buffer.
+  
 
 ## Local Dev IDE Setup & Config
 
