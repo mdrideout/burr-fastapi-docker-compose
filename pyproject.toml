@@ -1,0 +1,33 @@
+[tool.poetry]
+name = "app"
+version = "0.1.0"
+description = "A demonstration of FastAPI + Burr in a docker compose environment."
+authors = ["Matthew Rideout <boon4376@gmail.com>"]
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = ">=3.11.5,<3.12"
+python-dotenv = "^1.0.1"
+loguru = "^0.7.2"
+fastapi = "^0.115.0"
+uvicorn = { extras = ["standard"], version = "^0.31.0" }
+tortoise-orm = "^0.21.6"
+asyncpg = "^0.29.0"
+pytest = "^8.3.3"
+burr = { extras = [
+  "graphviz",
+  "hamilton",
+  "streamlit",
+  "tracking-client",
+  "tracking-server",
+], version = "^0.31.1" }
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.3"
+watchfiles = "^0.24.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

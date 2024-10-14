@@ -17,7 +17,21 @@ This provides a minimal Burr Application with two Actions - enough for demonstra
   - The **Burr container** has not been tested in a production environment, and running it in production in its current form makes telemetry data public because there is no authentication protection.
   - Recommend running this in development environment only.
 
-## Running It
+## Local Dev IDE Setup & Config
+
+The following is to get your local IDE python setup and resolving imports.
+
+This is not required to run the example. See **Running It** below. This is just required for a good development experience.
+
+1. Install Poetry ([Instructions](https://python-poetry.org/docs/#installing-with-pipx))
+1. Run `poetry install` in the project root to install all dependencies
+1. To resolve imports, activate the poetry environment python interpreter. VSCode instructions:
+   1. cmd + shift + p Python: Select Interpreter
+   1. Select the correct interpreter - if you cannot find it, go to the next step
+   1. Executing this command in your terminal will copy the path to the python interpreter to your clipboard: `poetry env info --path | pbcopy`
+   1. You can paste this into the _"Enter Interpreter Path"_ option
+
+## Running The Servers
 
 ```bash
 # Start the containers
@@ -25,12 +39,24 @@ $ docker compose up --build
 
 # Stopping the containers and clearing the volumes (helpful for troubleshooting)
 $ docker compose down -v
+
+# Nuke the containers for more troubleshooting
+$ docker system prune -a
 ```
 
 You will see logged messages of the URLs where both the FastAPI and Burr servers are available. 
 
 - Note: The FastAPI server is ready to accept requests from apps / Postman, and is not configured with CORS to handle browser requests.
-- Execute the test `GET` request against the FastAPI server to see the flow logged to Burr's web UI
+- Execute the test `GET` request to `http://0.0.0.0:8000/api/` to see the flow is logged to Burr's web UI
+
+## Create A Request
+
+Use postman or the following CURL request to test the flow.
+
+```bash
+# Send the CURL request with your lucky number
+$ curl -X GET "http://0.0.0.0:8000/api/?lucky_number=7"
+```
 
 ## Docker Compose Explainer
 

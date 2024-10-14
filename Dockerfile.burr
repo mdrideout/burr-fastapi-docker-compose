@@ -1,0 +1,29 @@
+# Use a lightweight Python image
+FROM python:3.11-slim
+
+# Set the working directory
+WORKDIR /app
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+  # Required for burr
+  gcc \ 
+  build-essential \
+  # tini forwards signals correctly to Burr
+  tini \
+  && rm -rf /var/lib/apt/lists/*
+
+# Install app dependencies
+RUN pip install --no-cache-dir \ 
+  # Install Burr with the [start] extra
+  burr[start]
+
+# Expose the port Burr runs on
+EXPOSE 7241
+
+# Use Tini as the entrypoint
+ENTRYPOINT ["/usr/bin/tini", "--"]
+
+# Set the command to start Burr
+# TODO: Add flag to specify directory (volume mount) to use to the entrypoint
+CMD ["burr", "--host", "0.0.0.0"]

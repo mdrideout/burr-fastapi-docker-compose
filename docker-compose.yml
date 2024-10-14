@@ -1,0 +1,34 @@
+version: "3"
+
+services:
+  api: # FastAPI server
+    container_name: api
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+      target: production
+    ports:
+      - "8000:8000"
+    volumes:
+      - api-logs:/logs # Mount the logs directory
+      - burr-data:/burr-data # Mount the shared Burr data directory
+    environment:
+      - burr_path=/burr-data # Set the burr_path to the mounted directory
+
+  burr: # Burr server
+    container_name: burr
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: Dockerfile.burr
+    ports:
+      - "7241:7241"
+    volumes:
+      - burr-data:/burr-data # Mount the shared Burr data directory
+    environment:
+      - burr_path=/burr-data # Set the burr_path to the mounted directory (see tracking/server/backend.py)
+
+volumes:
+  api-logs:
+  burr-data:
