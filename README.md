@@ -51,7 +51,7 @@ $ docker system prune -a
 You will see logged messages of the URLs where both the FastAPI and Burr servers are available. 
 
 - Note: The FastAPI server is ready to accept requests from apps / Postman, and is not configured with CORS to handle browser requests.
-- Execute the test `GET` request to `http://0.0.0.0:8000/api/` to see the flow is logged to Burr's web UI
+- Execute the test `GET` request to `http://0.0.0.0:8000/api/?lucky_number=7` to see the flow is logged to Burr's web UI
 
 ## Create A Request
 
