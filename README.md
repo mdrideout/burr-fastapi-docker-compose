@@ -2,7 +2,7 @@
 
 This is a boilerplate configuration of FastAPI and Burr in a docker compose environment, where FastAPI and Burr are running in separate containers with shared burr data. 
 
-This provides a minimal Burr Application with two Actions - enough for demonstrating telemetry between the containers, just focusing on the unique configuration of the docker compose environment.
+This provides a minimal Burr Application with simple actions - enough for demonstrating telemetry between the containers, focusing on the unique configuration of the docker compose environment.
 
 **FastAPI:** This FastAPI configuration is optimized for a docker compose environment, with poetry for package management, and hot reloading in development mode. See `docker-compose.override.yml` for development target hot reloading.
 
