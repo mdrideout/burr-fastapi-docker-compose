@@ -12,9 +12,6 @@ python-dotenv = "^1.0.1"
 loguru = "^0.7.2"
 fastapi = "^0.115.0"
 uvicorn = { extras = ["standard"], version = "^0.31.0" }
-tortoise-orm = "^0.21.6"
-asyncpg = "^0.29.0"
-pytest = "^8.3.3"
 burr = { extras = [
   "graphviz",
   "hamilton",
@@ -25,7 +22,6 @@ burr = { extras = [
 
 
 [tool.poetry.group.dev.dependencies]
-pytest = "^8.3.3"
 watchfiles = "^0.24.0"
 
 [build-system]
