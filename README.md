@@ -1,14 +1,16 @@
-# Burr FastAPI Docker Compose Example
+# Burr + FastAPI + Docker Compose Example
 
-This is a boilerplate configuration of FastAPI and Burr in a docker compose environment, where FastAPI and Burr are running in separate containers.
+This is a boilerplate configuration of FastAPI and Burr in a docker compose environment, where FastAPI and Burr are running in separate containers with shared burr data. 
 
-#### FastAPI
-This setup is optimized for a docker compose environment, with poetry for package management, and hot reloading in development mode. See `docker-compose.override.yml` for development target hot reloading. 
+This provides a minimal Burr Application with two Actions - enough for demonstrating telemetry between the containers, just focusing on the unique configuration of the docker compose environment.
+
+**FastAPI:** This FastAPI configuration is optimized for a docker compose environment, with poetry for package management, and hot reloading in development mode. See `docker-compose.override.yml` for development target hot reloading. 
 
 
-### Dev & Prod
+#### Dev & Prod
 
-- The FastAPI Dockerfile.api has development and production builds
+- **FastAPI**:
+  - The **FastAPI** Dockerfile.api has development and production builds
   - The development build includes hot reloading for fast development
   - The production build does not include hot reloading
 - **Burr**:
@@ -28,6 +30,7 @@ $ docker compose down -v
 You will see logged messages of the URLs where both the FastAPI and Burr servers are available. 
 
 - Note: The FastAPI server is ready to accept requests from apps / Postman, and is not configured with CORS to handle browser requests.
+- Execute the test `GET` request against the FastAPI server to see the flow logged to Burr's web UI
 
 ## Docker Compose Explainer
 
