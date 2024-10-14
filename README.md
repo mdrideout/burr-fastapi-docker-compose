@@ -1,5 +1,8 @@
 # Burr + FastAPI + Docker Compose Example
 
+- **[Burr](https://burr.dagworks.io/)**: A library modeling your application as a state machine of python constructs, with telemetry and UI for tracing workflows.
+- **[FastAPI](https://fastapi.tiangolo.com/)**: A modern, fast (high-performance), web framework for building APIs with Python based on standard Python type hints.
+
 This is a boilerplate configuration of FastAPI and Burr in a docker compose environment, where FastAPI and Burr are running in separate containers with shared burr data. 
 
 This provides a minimal Burr Application with simple actions - enough for demonstrating telemetry between the containers, focusing on the unique configuration of the docker compose environment.
